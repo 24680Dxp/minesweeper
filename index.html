@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MINESWEEPER - 复古未来主义扫雷</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <h1 class="game-title">MINESWEEPER</h1>
+            <p class="game-subtitle">RETRO FUTURISM EDITION</p>
+        </header>
+
+        <div class="game-panel">
+            <div class="mine-counter">
+                <span class="counter-icon">💣</span>
+                <span id="mineCount">010</span>
+            </div>
+
+            <button id="resetBtn" class="reset-btn" aria-label="重新开始">
+                <span id="faceIcon" class="face-icon">😊</span>
+            </button>
+
+            <div class="timer">
+                <span id="timerDisplay">000</span>
+                <span class="counter-icon">⏱️</span>
+            </div>
+        </div>
+
+        <div id="gameBoard" class="game-board" role="grid" aria-label="扫雷游戏网格">
+        </div>
+
+        <div class="difficulty-selector">
+            <button class="difficulty-btn active" data-difficulty="beginner" aria-label="初级难度">
+                <span class="btn-icon">🎮</span>
+                <span class="btn-text">初级</span>
+                <span class="btn-info">9×9 · 10💣</span>
+            </button>
+            <button class="difficulty-btn" data-difficulty="intermediate" aria-label="中级难度">
+                <span class="btn-icon">🎯</span>
+                <span class="btn-text">中级</span>
+                <span class="btn-info">16×16 · 40💣</span>
+            </button>
+            <button class="difficulty-btn" data-difficulty="expert" aria-label="高级难度">
+                <span class="btn-icon">💀</span>
+                <span class="btn-text">高级</span>
+                <span class="btn-info">30×16 · 99💣</span>
+            </button>
+        </div>
+
+        <div class="game-stats">
+            <div class="stat-item">
+                <span class="stat-label">用时</span>
+                <span id="finalTime" class="stat-value">--</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">状态</span>
+                <span id="gameStatus" class="stat-value">就绪</span>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h3>🎮 游戏说明</h3>
+            <p><strong>左键点击</strong>：揭示格子</p>
+            <p><strong>右键点击</strong>：标记/取消标记地雷</p>
+            <p><strong>长按（移动端）</strong>：标记地雷</p>
+            <p><strong>目标</strong>：揭示所有非雷格子即可获胜！</p>
+        </div>
+    </div>
+
+    <div id="victoryOverlay" class="overlay victory-overlay">
+        <div class="overlay-content victory-content">
+            <div class="victory-stars">⭐⭐⭐</div>
+            <h2>🎉 胜利！🎉</h2>
+            <p class="victory-time">用时：<span id="victoryTime">0</span> 秒</p>
+            <button class="play-again-btn" onclick="game.resetGame()">再来一局</button>
+        </div>
+    </div>
+
+    <div id="gameOverOverlay" class="overlay gameover-overlay">
+        <div class="overlay-content gameover-content">
+            <h2>💥 游戏结束 💥</h2>
+            <p>踩到地雷了！</p>
+            <button class="play-again-btn" onclick="game.resetGame()">重新挑战</button>
+        </div>
+    </div>
+
+    <script src="js/game.js"></script>
+</body>
+</html>
